@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0d5c3e;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0d5c3e;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color:#D2B477;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #8A94ED;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0d5c3e;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="FT.JPG" width="50" height="50" alt="" class="logo">
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">CAHAYA PROJEK</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="INDEX.html" class="nav-link">BERANDA</a></li>
+      
+     
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">KEUTAMAAN SHOLAT</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">SIFAT SHOLAT NABI</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">TATA CARA SHOLAT</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 DOA IFTITAH</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">DZIKIR SETELAH SHOLAT</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>TATA CARA SHOLAT</h1>
+   <center><img src="TT.PNG" width="500" height="300"></center>
+    <p>Panduan urutan gerakan dan bacaan sholat</p>
+</header>
+
+<div class="container">
+
+    <div class="intro">
+        <h2>Pengertian Sholat</h2>
+        <p>
+        Sholat adalah ibadah kepada Allah SWT yang terdiri dari
+        perkataan dan perbuatan tertentu, dimulai dengan takbiratul ihram
+        dan diakhiri dengan salam. Sholat merupakan kewajiban bagi setiap
+        muslim dan menjadi salah satu tiang agama Islam.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">01</span> Niat</h3>
+        <p>
+        Niat dilakukan di dalam hati untuk melaksanakan sholat tertentu
+        karena Allah SWT. Niat menjadi dasar dan tujuan seseorang dalam beribadah.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">02</span> Takbiratul Ihram</h3>
+        <p>
+        Mengangkat kedua tangan sejajar bahu atau telinga sambil mengucapkan
+        "Allahu Akbar". Takbir ini menandai dimulainya sholat.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">03</span> Doa Iftitah</h3>
+        <p>
+        Membaca doa iftitah sebagai pembuka sholat yang berisi pujian,
+        pengagungan, dan pengakuan bahwa ibadah hanya ditujukan kepada Allah SWT.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">04</span> Membaca Al-Fatihah</h3>
+        <p>
+        Membaca Surah Al-Fatihah pada setiap rakaat sebagai bagian
+        penting dalam sholat.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">05</span> Membaca Surat Pendek</h3>
+        <p>
+        Membaca surat atau ayat Al-Qur'an setelah Al-Fatihah
+        pada rakaat pertama dan kedua sholat fardhu.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">06</span> Rukuk</h3>
+        <p>
+        Membungkukkan badan dengan kedua tangan memegang lutut,
+        menjaga punggung tetap rata, dan membaca tasbih rukuk.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">07</span> I'tidal</h3>
+        <p>
+        Bangkit dari rukuk hingga berdiri tegak dengan tenang
+        sambil membaca bacaan i'tidal.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">08</span> Sujud Pertama</h3>
+        <p>
+        Meletakkan dahi bersama hidung, kedua telapak tangan,
+        kedua lutut, dan ujung jari kedua kaki di tempat sujud,
+        kemudian membaca tasbih sujud.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">09</span> Duduk di Antara Dua Sujud</h3>
+        <p>
+        Duduk dengan tenang setelah sujud pertama dan membaca
+        doa di antara dua sujud.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">10</span> Sujud Kedua</h3>
+        <p>
+        Melakukan sujud kedua seperti sujud pertama
+        sambil membaca tasbih sujud.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">11</span> Berdiri untuk Rakaat Berikutnya</h3>
+        <p>
+        Bangkit dari sujud kedua untuk melanjutkan rakaat berikutnya.
+        Gerakan dan bacaan dilakukan sesuai urutan sholat.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">12</span> Tasyahud</h3>
+        <p>
+        Duduk membaca tahiyat. Pada rakaat terakhir,
+        membaca tasyahud akhir dan shalawat kepada Nabi Muhammad ﷺ.
+        </p>
+    </div>
+
+    <div class="step">
+        <h3><span class="number">13</span> Salam</h3>
+        <p>
+        Menoleh ke kanan dan ke kiri sambil mengucapkan salam
+        sebagai penutup sholat.
+        </p>
+    </div>
+
+    <div class="note">
+        <h3>Hal yang Perlu Diperhatikan</h3>
+        <p>
+        Sholat hendaknya dilakukan dengan khusyuk, tenang, menjaga
+        thuma'ninah (ketenangan pada setiap gerakan), memahami bacaan,
+        serta memperhatikan kebersihan dan kesucian sebelum sholat.
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    <p>Belajar Islam • Tata Cara Sholat</p>
+    <p>Semoga sholat kita menjadi ibadah yang baik dan diterima Allah SWT.</p>
+</footer>
+
+</body>
+</html>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0d5c3e;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0d5c3e;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #D2B477;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #8A94ED;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0d5c3e;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="FT.JPG" width="50" height="50" alt="" class="logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+        <span class="brand-title">CAHAYA PROJEK</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="INDEX.html" class="nav-link">BERANDA</a></li>
+      
+     
+
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">KEUTAMAAN SHOLAT</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">SIFAT SHOLAT NABI</a></li>
+      <li class="nav-item"><a href="tata.html" class="nav-link">TATA CARA SHOLAT</a></li>
+      <li class="nav-item"><a href="12.html" class="nav-link">12 DOA IFTITAH</a></li>
+	  <li class="nav-item"><a href="#dzikir.html" class="nav-link">DZIKIR SETELAH SHOLAT</a></li>
+    </ul>
+
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>SIFAT SHOLAT NABI</h1>
+   <center><img src="SFT.PNG" width="500" height="300"></center>
+<p>
+Sholat Nabi Muhammad ﷺ merupakan teladan terbaik bagi umat Islam.
+Beliau melaksanakan sholat dengan penuh kekhusyukan, ketenangan,
+ketundukan, dan mengikuti tuntunan Allah SWT. Setiap bacaan dan
+gerakan sholat beliau dilakukan dengan baik dan tidak tergesa-gesa.
+Oleh karena itu, umat Islam dianjurkan untuk meneladani sifat dan
+cara sholat Rasulullah ﷺ agar ibadah menjadi lebih sempurna.
+</p>
+
+<h2>1. Khusyuk dalam Sholat</h2>
+<p>
+Rasulullah ﷺ melaksanakan sholat dengan penuh kekhusyukan dan
+menghadirkan hati ketika menghadap Allah SWT. Beliau menghayati
+bacaan sholat serta menyadari bahwa dirinya sedang beribadah kepada
+Allah. Khusyuk mengajarkan seorang Muslim untuk fokus, rendah hati,
+dan tidak lalai ketika melaksanakan sholat.
+</p>
+
+<h2>2. Menjaga Sholat Tepat Waktu</h2>
+<p>
+Rasulullah ﷺ senantiasa memperhatikan waktu sholat dan mengajarkan
+umatnya untuk melaksanakan sholat sesuai waktu yang telah ditentukan.
+Menjaga waktu sholat merupakan bentuk ketaatan kepada Allah SWT,
+sekaligus melatih kedisiplinan dan tanggung jawab dalam kehidupan.
+</p>
+
+<h2>3. Mengikuti Tata Cara Sholat yang Benar</h2>
+<p>
+Rasulullah ﷺ melaksanakan sholat sesuai tuntunan Allah SWT dan
+mengajarkan tata cara sholat kepada para sahabat. Mulai dari takbiratul
+ihram, membaca Al-Qur'an, rukuk, sujud, duduk, hingga salam,
+semuanya dilakukan sesuai sunnah. Beliau bersabda agar umat Islam
+melaksanakan sholat sebagaimana mereka melihat beliau sholat.
+</p>
+
+<h2>4. Membaca Al-Qur'an dengan Tartil</h2>
+<p>
+Rasulullah ﷺ membaca ayat-ayat Al-Qur'an dalam sholat dengan
+jelas, perlahan, teratur, dan penuh penghayatan. Beliau tidak
+tergesa-gesa dalam membaca ayat, sehingga bacaan sholat menjadi
+lebih baik dan memberikan kesempatan untuk merenungkan maknanya.
+</p>
+
+<h2>5. Melaksanakan Gerakan dengan Thuma'ninah</h2>
+<p>
+Rasulullah ﷺ melaksanakan setiap gerakan sholat dengan tenang
+dan sempurna. Beliau tidak terburu-buru ketika rukuk, sujud,
+berdiri, maupun duduk. Thuma'ninah berarti tenang sejenak dalam
+setiap gerakan sholat, sehingga setiap posisi dapat dilakukan
+dengan baik dan benar.
+</p>
+
+<h2>6. Menyempurnakan Rukuk dan Sujud</h2>
+<p>
+Rasulullah ﷺ melakukan rukuk dan sujud dengan sempurna sesuai
+tuntunan. Ketika rukuk, beliau menjaga posisi tubuh dengan baik,
+sedangkan ketika sujud beliau menunjukkan ketundukan sepenuhnya
+kepada Allah SWT. Gerakan tersebut mengajarkan kerendahan hati,
+ketaatan, dan kebesaran Allah SWT.
+</p>
+
+<h2>7. Memperbanyak Doa dalam Sujud</h2>
+<p>
+Rasulullah ﷺ mengajarkan bahwa sujud merupakan keadaan yang sangat
+dekat antara seorang hamba dengan Allah SWT. Oleh karena itu,
+umat Islam dianjurkan memperbanyak doa ketika sujud, memohon
+ampunan, rahmat, petunjuk, serta kebaikan dunia dan akhirat.
+</p>
+
+<h2>8. Tidak Tergesa-gesa dalam Sholat</h2>
+<p>
+Rasulullah ﷺ melaksanakan sholat dengan tenang, teratur, dan
+tidak tergesa-gesa. Beliau mengajarkan agar setiap gerakan
+dilakukan dengan sempurna. Sholat yang tenang membantu seseorang
+lebih menghayati ibadah dan menjaga kesempurnaan gerakan sholat.
+</p>
+
+<h2>9. Menjaga Kebersihan Sebelum Sholat</h2>
+<p>
+Rasulullah ﷺ mengajarkan pentingnya bersuci sebelum sholat,
+seperti berwudhu, menjaga kebersihan pakaian, dan memastikan
+tempat sholat bersih. Kebersihan merupakan bagian penting dalam
+ibadah karena seorang Muslim harus mempersiapkan dirinya
+ketika hendak menghadap Allah SWT.
+</p>
+
+<h2>10. Ikhlas dalam Beribadah</h2>
+<p>
+Rasulullah ﷺ mengajarkan agar sholat dilaksanakan dengan ikhlas
+karena Allah SWT, bukan untuk mendapatkan pujian dari manusia.
+Keikhlasan menjadikan ibadah dilakukan dengan sungguh-sungguh,
+penuh kesadaran, dan mengharapkan ridha Allah SWT.
+</p>
+
+<h2>Dalil Meneladani Sholat Nabi</h2>
+
+<p>
+Rasulullah ﷺ bersabda:
+</p>
+
+<p>
+صَلُّوا كَمَا رَأَيْتُمُونِي أُصَلِّي
+</p>
+
+<p>
+Artinya: "Sholatlah kalian sebagaimana kalian melihat aku sholat."
+</p>
+  </main>
+
+</body>
+</html>
